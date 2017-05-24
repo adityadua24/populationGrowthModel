@@ -3,7 +3,7 @@ function [ foxes_array, rabbits_array, everyoneDead ] = ageCheck( foxes_array, r
 %   Detailed explanation goes here
 everyoneDead = true;
 for i = 1:length(foxes_array)
-    if foxes_array{i}.age >= 5000
+    if foxes_array{i}.age >= 1000
         foxes_array{i}.beStill = true;
     else
         everyoneDead = false;
@@ -12,7 +12,7 @@ end
 
 
 for i = 1:length(rabbits_array)
-    if rabbits_array{i}.age >= 10000
+    if rabbits_array{i}.age >= 1000
         rabbits_array{i}.beStill = true;
     else
         everyoneDead = false;

@@ -6,13 +6,14 @@ grid = zeros(rows, cols, 3);
 
 numFoxes = 50;
 numRabbits = 50;
+numMushrooms = 20;
 
 rabbit_step_size = 8;
 fox_step_size = 4;
 
 foxes_array = cell(1, numFoxes);
 rabbits_array = cell(1, numRabbits);
-
+mush_array = cell(1, numMushrooms);
 %% initialise and Spawn Foxes & Rabbits
 
 % Foxes
@@ -29,9 +30,16 @@ for i=1:length(rabbits_array)
     spawn(rabbits_array{i}, rows);
 end
 
+% deploy magic ,mushrooms
+for i=1:length(mush_array)
+    mush_array{i} = magic_mushroom;
+    spawn(mush_array{i}, rows);
+end
+
+
 %% Initialise Figure
 
-img = mapToGrid(grid, foxes_array, rabbits_array);
+img = mapToGrid(grid, foxes_array, rabbits_array, mush_array);
 
 % Show the initial frame in the animation
 set(figure, 'Visible', 'on', 'Position', get(0,'Screensize'))
@@ -39,6 +47,10 @@ set(gcf, 'KeyPressFcn', @KeyPressed) % this allows us to react to any key presse
 handle = imshow(img, 'InitialMagnification', 'Fit'); % save the handle for when we want to update the image later
 title('Press any key to finish')
 drawnow
+
+%% video writer
+modelVideo = VideoWriter('vid');
+open(modelVideo);
 
 %% Run Model
 done = false;
@@ -55,13 +67,16 @@ while ~done
     end
 
     % Check for interactions after change in location
-    [foxes_array, rabbits_array] = interactionsCheck(foxes_array, rabbits_array, rows);
+    [foxes_array, rabbits_array, mush_array] = interactionsCheck(foxes_array, rabbits_array, mush_array,rows);
     [foxes_array, rabbits_array, done] = ageCheck(foxes_array, rabbits_array);
-    handle.CData = mapToGrid(grid, foxes_array, rabbits_array);
+    handle.CData = mapToGrid(grid, foxes_array, rabbits_array, mush_array);
     informationString = ['Number of Foxes: ' length(foxes_array)];
-    drawnow
-    
+    drawnow;
+    pull_frame = getframe;
+    writeVideo(modelVideo, pull_frame);
 end
+close(gcf);
+close(modelVideo);
 %% This function is the means by which we can intercept a keypress from the user, to stop the loop
 function KeyPressed(~, ~)
     % This function is called by MATLAB automatically, whenever the user presses a key in the Figure window.

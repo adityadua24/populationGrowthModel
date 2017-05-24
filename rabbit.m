@@ -7,6 +7,7 @@ classdef rabbit < handle
         step_size
         beStill = false
         age = 0
+        didEatMush = false;
     end
     
     methods
