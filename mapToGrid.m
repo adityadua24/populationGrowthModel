@@ -1,5 +1,5 @@
-function img = mapToGrid(grid, foxes_array, rabbits_array, numFoxes, numRabbits)
-for i = 1:numFoxes
+function img = mapToGrid(grid, foxes_array, rabbits_array)
+for i = 1:length(foxes_array)
     x = foxes_array{i}.location(1);
     y = foxes_array{i}.location(2);
     grid(x, y, 1) = 255;
@@ -8,7 +8,7 @@ for i = 1:numFoxes
     grid(x, y+1, 1) = 255;
     
 end
-for i=1:numRabbits
+for i=1:length(rabbits_array)
     if ~rabbits_array{i}.beStill
         x = rabbits_array{i}.location(1);
         y = rabbits_array{i}.location(2);

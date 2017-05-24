@@ -36,13 +36,13 @@ classdef fox < handle
              end
          end
          function locationCheck(obj)
-             % Check of x
+             % Check of x, if out of bounds then wrap
              if obj.location(1) > 500
                  obj.location(1) = obj.location(1) - 500;
              elseif obj.location(1) < 1
                  obj.location(1) = 500 - abs(obj.location(1));
              end
-             % Check of y
+             % Check of y, if out of bounds then wrap
              if obj.location(2) > 500
                  obj.location(2) = obj.location(2) - 500;
              elseif obj.location(2) < 1

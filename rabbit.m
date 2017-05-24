@@ -5,7 +5,7 @@ classdef rabbit < handle
     properties
         location
         step_size
-        beStill
+        beStill = false
     end
     
     methods
