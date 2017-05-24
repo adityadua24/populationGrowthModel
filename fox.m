@@ -8,8 +8,8 @@ classdef fox < handle
     end
     
     methods
-         function spawn(obj)
-             obj.location = [randi([1 500]) randi([1 500])];      
+         function spawn(obj, rows, cols)
+             obj.location = [randi([rows cols]) randi([rows cols])];      
          end
          function step(obj)
              r = rand;

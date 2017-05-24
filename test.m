@@ -1,5 +1,4 @@
-foxes = repmat(fox, 1, 10);
+img = imread('photo.png');
 
-for i= 1:10
-    foxes(i).spawn()
-end
+imshow(img)
+imreduced = img(1:100, 1:100, :);
