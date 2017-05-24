@@ -6,6 +6,7 @@ classdef rabbit < handle
         location
         step_size
         beStill = false
+        age = 0
     end
     
     methods
@@ -13,6 +14,7 @@ classdef rabbit < handle
              obj.location = [randi([1 rows]) randi([1 rows])];      
          end
         function step(obj)
+            obj.age = obj.age + 1;
             if ~obj.beStill
              r = rand;
              if (r > 0) && (r <= 0.125)

@@ -5,6 +5,8 @@ classdef fox < handle
     properties
         location
         step_size
+        beStill = false
+        age = 0;
     end
     
     methods
@@ -12,6 +14,7 @@ classdef fox < handle
              obj.location = [randi([1 rows]) randi([1 rows])];      
          end
          function step(obj)
+             obj.age = obj.age + 1;
              r = rand;
              if (r > 0) && (r <= 0.125)
                  obj.location(2) = obj.location(2) + obj.step_size; % y++

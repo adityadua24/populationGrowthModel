@@ -56,6 +56,7 @@ while ~done
 
     % Check for interactions after change in location
     [foxes_array, rabbits_array] = interactionsCheck(foxes_array, rabbits_array, rows);
+    [foxes_array, rabbits_array, done] = ageCheck(foxes_array, rabbits_array);
     handle.CData = mapToGrid(grid, foxes_array, rabbits_array);
     informationString = ['Number of Foxes: ' length(foxes_array)];
     drawnow
