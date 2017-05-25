@@ -59,11 +59,11 @@ while ~done
     % Rabbits and Foxes take a step
     for i=1:length(foxes_array)
         step(foxes_array{i});
-        locationCheck(foxes_array{i});
+        locationCheck(foxes_array{i}, rows);
     end
     for i=1:length(rabbits_array)
         step(rabbits_array{i});
-        locationCheck(rabbits_array{i});
+        locationCheck(rabbits_array{i}, rows);
     end
 
     % Check for interactions after change in location

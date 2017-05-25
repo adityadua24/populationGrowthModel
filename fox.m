@@ -38,18 +38,18 @@ classdef fox < handle
                  obj.location(1) = obj.location(1) - obj.step_size; % x--
              end
          end
-         function locationCheck(obj)
+         function locationCheck(obj, rows)
              % Check of x, if out of bounds then wrap
-             if obj.location(1) > 500
-                 obj.location(1) = obj.location(1) - 500;
+             if obj.location(1) > rows
+                 obj.location(1) = obj.location(1) - rows;
              elseif obj.location(1) < 1
-                 obj.location(1) = 500 - abs(obj.location(1));
+                 obj.location(1) = rows - abs(obj.location(1));
              end
              % Check of y, if out of bounds then wrap
-             if obj.location(2) > 500
-                 obj.location(2) = obj.location(2) - 500;
+             if obj.location(2) > rows
+                 obj.location(2) = obj.location(2) - rows;
              elseif obj.location(2) < 1
-                 obj.location(2) = 500 - abs(obj.location(2));
+                 obj.location(2) = rows - abs(obj.location(2));
              end
          end
          
