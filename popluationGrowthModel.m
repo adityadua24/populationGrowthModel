@@ -14,6 +14,7 @@ fox_step_size = 4;
 foxes_array = cell(1, numFoxes);
 rabbits_array = cell(1, numRabbits);
 mush_array = cell(1, numMushrooms);
+
 %% initialise and Spawn Foxes & Rabbits
 
 % Foxes
@@ -49,6 +50,7 @@ title('Press any key to finish')
 drawnow
 
 %% video writer
+
 modelVideo = VideoWriter('vid');
 open(modelVideo);
 

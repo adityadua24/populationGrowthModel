@@ -1,5 +1,8 @@
 %function [ foxes_array, rabbits_array ] = interactionsCheck(foxes_array, rabbits_array, numFoxes, numRabbits)
-function [foxes_array, rabbits_array, mush_array] = interactionsCheck(foxes_array, rabbits_array, mush_array,rows)    
+function [foxes_array, rabbits_array, mush_array] = interactionsCheck(foxes_array, rabbits_array, mush_array,rows)
+    probability_reproducing_foxes = 0.3;
+    probability_reproducing_rabbits = 0.5;
+    
     for i=1:length(foxes_array)
         selectedFox1 = foxes_array{i};
         if (~selectedFox1.beStill) % if fox is still then go ahead with checks
@@ -69,10 +72,12 @@ function [foxes_array, rabbits_array, mush_array] = interactionsCheck(foxes_arra
             rabbits_array{1, end+1} = rabbit;
             rabbits_array{1, end}.step_size = 8;
             spawn(rabbits_array{1, end}, rows);
+            rabbits_array{1, end}.location = object.location + object.step_size;
         elseif isa(object, 'fox')
             foxes_array{1, end+1} = fox;
             foxes_array{1, end}.step_size = 4;
             spawn(foxes_array{1, end}, rows);
+            foxes_array{1, end}.location = object.location + object.step_size;
         end
     end
     function rabbits_reproduced(rabbit1, rabbit2)
@@ -102,9 +107,8 @@ function [foxes_array, rabbits_array, mush_array] = interactionsCheck(foxes_arra
         if ~fox2.beStill % Do vicinity check only if fox is still alive
             together_foxes_foxes = vicinityCheck(fox1, fox2);
         end
-        probability_reproducing = 0.3;
         if together_foxes_foxes
-            if (rand < probability_reproducing) && (length(foxes_array) < 100)
+            if (rand < probability_reproducing_foxes) && (length(foxes_array) < 100)
                 reproduce_animal(fox2);
                 foxes_reproduced(fox1, fox2);
             end
@@ -115,9 +119,8 @@ function [foxes_array, rabbits_array, mush_array] = interactionsCheck(foxes_arra
         if ~rabbit3.beStill % Do vicinty check only if rabbit is alive
             together_rabbits_rabbits = vicinityCheck(rabbit2, rabbit3);
         end
-        probability_reproducing = 0.5;
         if together_rabbits_rabbits
-            if (rand < probability_reproducing) && (length(rabbits_array) < 150)
+            if (rand < probability_reproducing_rabbits) && (length(rabbits_array) < 150)
                 reproduce_animal(rabbit3);
                 rabbits_reproduced(rabbit2, rabbit3); % if rabbits reproduce their ages are doubled so they die sooner
             end
@@ -141,6 +144,3 @@ function [foxes_array, rabbits_array, mush_array] = interactionsCheck(foxes_arra
         end
     end
 end
-% function playDeadSound
-% end
-
