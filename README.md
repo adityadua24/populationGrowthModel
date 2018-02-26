@@ -16,3 +16,5 @@ Simply clone the repo and run the populationGrowthModel.m file.
 
 ## Species interaction
 
+[![Simulation](./imgs/2.PNG)](https://youtu.be/wr_xjnttu9I)
+
