@@ -7,14 +7,18 @@ A population growth model and simulation of three species in a forest. The defin
 ## Species Modelled
 
 Foxes
+
 Rabbits
-Mushrooms with some magic powers
+
+Mushrooms(with some magic powers)
 
 ## Want to _Run_ it Yourself?!
 
 Simply clone the repo and run the populationGrowthModel.m file.
 
-## Species interaction
+## Simulation screenshot
+
+Click on the image below to watch the simulation video on YouTube.
 
 [![Simulation](./imgs/2.PNG)](https://youtu.be/wr_xjnttu9I)
 
