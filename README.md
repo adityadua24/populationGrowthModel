@@ -1,4 +1,4 @@
-# Populaiton growth model
+# Population growth model
 
 A population growth model and simulation of three species in a forest. The defined interactions between species affects their number and survival. It can be used to produce more realistic scenario with real world parameters to depict the survival of certain species co-existing together
 
